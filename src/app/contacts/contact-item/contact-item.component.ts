@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Contact } from '../contact.model';
 
 @Component({
-  selector: 'cms-contact-detail',
-  templateUrl: './contact-detail.component.html'
+  selector: 'cms-contact-item',
+  templateUrl: './contact-item.component.html'
 })
-export class ContactDetailComponent {
+export class ContactItemComponent {
   @Input() contact: Contact;
 }
