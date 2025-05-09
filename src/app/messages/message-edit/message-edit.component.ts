@@ -4,7 +4,7 @@ import { Message } from '../message.model';
 @Component({
   selector: 'cms-message-edit',
   templateUrl: './message-edit.component.html',
-  styleUrls: ['./message-edit.component.css'] // ✅ note the 's'!
+  styleUrls: ['./message-edit.component.css'] 
 })
 export class MessageEditComponent {
   @Output() addMessageEvent = new EventEmitter<Message>();
@@ -12,7 +12,7 @@ export class MessageEditComponent {
   @ViewChild('subject', { static: false }) subjectInputRef: ElementRef;
   @ViewChild('msgText', { static: false }) msgTextInputRef: ElementRef;
 
-  currentSender = 'Your Name';
+  currentSender = 'Justus';
 
   onSendMessage() {
     const subject = this.subjectInputRef.nativeElement.value;
