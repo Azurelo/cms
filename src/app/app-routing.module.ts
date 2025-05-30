@@ -20,7 +20,8 @@ const routes: Routes = [
   },
   { path: 'messages', component: MessageListComponent },
   {
-  path: 'contacts', component: ContactsComponent, children: [
+  path: 'contacts', component: ContactsComponent, 
+    children: [
     { path: 'new', component: ContactEditComponent },
     { path: ':id', component: ContactDetailComponent },
     { path: ':id/edit', component: ContactEditComponent }
