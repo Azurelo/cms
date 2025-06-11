@@ -1,21 +1,25 @@
 <div class="panel panel-default">
-    <div class="panel-heading clearfix">
-        <h1 class="pull-left" style="margin: 0; font-weight: bold;">Contacts</h1>
-        <div class="pull-right">
-          <a class="btn btn-primary" [routerLink]="['new']">Add Contact</a>
-        </div>
-      </div>
-      
-      
-      
-  
-    <div class="panel-body">
-      <cms-contact-item 
-        *ngFor="let contact of contacts" 
-        [contact]="contact"
-        (click)="onSelected(contact)">
-      </cms-contact-item>
-
+  <div class="panel-heading clearfix">
+    <h1 class="pull-left" style="margin: 0; font-weight: bold;">Contacts</h1>
+    <div class="pull-right">
+      <a class="btn btn-primary" [routerLink]="['new']">Add Contact</a>
     </div>
   </div>
-  
+
+  <div class="panel-body"
+       id="allContactsList"
+       cdkDropList
+       [cdkDropListData]="contacts"
+       [cdkDropListConnectedTo]="['groupList']"
+       >
+    <div
+      *ngFor="let contact of contacts"
+      cdkDrag
+      [cdkDragData]="contact"
+      class="list-group-item"
+      style="margin-bottom: 10px;"
+    >
+      <cms-contact-item [contact]="contact"></cms-contact-item>
+    </div>
+  </div>
+</div>
