@@ -1,25 +1,45 @@
-<div class="panel panel-default">
-  <div class="panel-heading clearfix">
-    <h1 class="pull-left" style="margin: 0; font-weight: bold;">Contacts</h1>
-    <div class="pull-right">
-      <a class="btn btn-primary" [routerLink]="['new']">Add Contact</a>
-    </div>
-  </div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <!-- Panel Header with Title and Search -->
+      <div class="panel-heading">
+        <div class="row">
+          <h2 class="pull-left" style="margin: 0; font-weight: bold;">Contacts</h2>
+        </div>
+        <div class="row">
+          <div class="input-group pull-left pad-left-right col-xs-7">
+            <input
+              type="text"
+              class="form-control"
+              #searchBox
+              (keyup)="search(searchBox.value)"
+              placeholder="Enter a search value">
+            <div
+              class="glyphicon glyphicon-search input-group-addon"
+              (click)="search(searchBox.value)">
+            </div>
+          </div>
+          <div class="pull-right pad-left-right">
+            <a class="btn btn-success" [routerLink]="['new']">New Contact</a>
+          </div>
+        </div>
+      </div>
 
-  <div class="panel-body"
-       id="allContactsList"
-       cdkDropList
-       [cdkDropListData]="contacts"
-       [cdkDropListConnectedTo]="['groupList']"
-       >
-    <div
-      *ngFor="let contact of contacts"
-      cdkDrag
-      [cdkDragData]="contact"
-      class="list-group-item"
-      style="margin-bottom: 10px;"
-    >
-      <cms-contact-item [contact]="contact"></cms-contact-item>
+      <!-- Panel Body with Contact List -->
+      <div class="panel-body"
+           id="allContactsList"
+           cdkDropList
+           [cdkDropListData]="contacts"
+           [cdkDropListConnectedTo]="['groupList']">
+        <div
+          *ngFor="let contact of contacts | contactsFilter:term"
+          cdkDrag
+          [cdkDragData]="contact"
+          class="list-group-item"
+          style="margin-bottom: 10px;">
+          <cms-contact-item [contact]="contact"></cms-contact-item>
+        </div>
+      </div>
     </div>
   </div>
 </div>
